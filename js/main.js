@@ -12,28 +12,31 @@ function validateForm(){
 	}
 	if(camposObligatorios)
 }*/
-var form= document.getElementsByClassName("form-signup");
+
 var nombre= document.getElementById("name").value;
 var apellido= document.getElementById("lastname").value;
 var correo= document.getElementById("input-email").value;
 var contrasena= document.getElementById("input-password").value;
 
-//validacion nombre
+
+//validacion nombre vacio
 function validateForm() {
     if(nombre.length==0){
         alert("Debe ingresar su nombre");
         return false;
-    }
+   }
+   soloLetras(nombre);
+   primeraMayuscula(nombre);
 }
-
 //nombre debe ser solo letras 
 
-function nombre(){
-	var caracter = /^[a-Za-z\_\-\.\s\xF1\xD1]+$/;
-	if(caracter.test(nombre)){
+function soloLetras(){
+  var caracter = /^[a-Za-z\_\-\.\s\xF1\xD1]+$/;
+  if(caracter.test(nombre)){
    return true;
 }else{
   alert("Debe ingresar sololetras");
+  return false;
    }
 }
 //primera letra mayuscula
@@ -45,25 +48,32 @@ function primeraMayuscula(nombre){
     return false;
   }
 }
+
+
 //validar input apellido
- function apell(){
-	var caracter = /^[a-zA-Z]*$/;
-	var mayuscu= apellido.charAt(0).toUpperCase() + apellido.slice(1);
-	if(apellido != caracter){
-   return true;
+ function validarApellido(){
+	if(apellido.length == 0){
+    alert("Debe ingresar Apellido");
+   return false;
 }
-   if(apellido == mayuscu){
-      return true;
-   } else{
-   	return false;
-   }
+   	return true;
+primeraMayuscula(apellido);
+soloLetras(apellido);
  }
  //validar correo
 
  function validarEmail(valor) {
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(valor)){
-   alert("La dirección de email " + valor + " es correcta.");
-  } else {
-   alert("La dirección de email es incorrecta.");
+  if(correo.length == 0){
+    alert("Debe ingresar su correo");
+    return false;
   }
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(correo)){
+   return false;
+  } 
 }
+
+// validar lista
+var form= document.getElementsByClassName("form-control").selectedIndex;
+   if(form == null || form == 0){
+    alert("Elija una bicicleta");
+   }
