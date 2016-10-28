@@ -18,29 +18,33 @@ var apellido= document.getElementById("lastname").value;
 var correo= document.getElementById("input-email").value;
 var contrasena= document.getElementById("input-password").value;
 
+//validacion nombre
 function validateForm() {
-    var x = document.forms["form-signup"]["sr-only"].value;
-    if (x == null || x == "") {
-        alert("La casilla debe ser llenada");
+    if(nombre.length==0){
+        alert("Debe ingresar su nombre");
         return false;
     }
 }
 
-//validad input nombre
+//nombre debe ser solo letras 
+
 function nombre(){
-	var caracter = /^[a-zA-Z]*$/;
-	var mayusc= nombre.charAt(0).toUpperCase() + nombre.slice(1);
-	if(nombre != caracter && nombre == mayusc){
+	var caracter = /^[a-Za-z\_\-\.\s\xF1\xD1]+$/;
+	if(caracter.test(nombre)){
    return true;
+}else{
+  alert("Debe ingresar sololetras");
+   }
 }
-   if(nombre.length == 0){
-   	alert ("debe ingresar nombre");
-   	return false;
-   }
-   else{
-   	return false;
-   }
- }
+//primera letra mayuscula
+function primeraMayuscula(nombre){
+  if(nombre.substring(0,1) == nombre.substring(0,1).toUpperCase()){
+    return true;
+  }else{
+    alert("La primera letra debe ser mayúscula");
+    return false;
+  }
+}
 //validar input apellido
  function apell(){
 	var caracter = /^[a-zA-Z]*$/;
