@@ -1,79 +1,80 @@
 
-/*var camposObligatorios= document.getElementsByClassName("sr-only").value;
-
-function validateForm(){
-	
-	if(camposObligatorios[0] == a caracteres a-z && la primera letra es mayuscula){
-        
-	}if(camposObligatorios== ""){
-		alert ("no debe estar vacio")
-	}else{
-		alert (no es valido);
-	}
-	if(camposObligatorios)
-}*/
-
-var nombre= document.getElementById("name").value;
-var apellido= document.getElementById("lastname").value;
-var correo= document.getElementById("input-email").value;
-var contrasena= document.getElementById("input-password").value;
-
 
 //validacion nombre vacio
 function validateForm() {
-    if(nombre.length==0){
+  //validar nombre
+  var nombre= document.getElementById("name");
+    if(nombre.value == null || nombre.value.length==0 || /^\s+$/.test(nombre.value)){
         alert("Debe ingresar su nombre");
         return false;
    }
-   soloLetras(nombre);
-   primeraMayuscula(nombre);
-}
-//nombre debe ser solo letras 
-
-function soloLetras(){
-  var caracter = /^[a-Za-z\_\-\.\s\xF1\xD1]+$/;
-  if(caracter.test(nombre)){
-   return true;
-}else{
-  alert("Debe ingresar sololetras");
-  return false;
-   }
-}
-//primera letra mayuscula
-function primeraMayuscula(nombre){
-  if(nombre.substring(0,1) == nombre.substring(0,1).toUpperCase()){
+   //solo letras
+  else if(/^^[a-zA-Z]*$/.test(nombre.value) == false){
+    alert ("Nombre no valido, ingresar solo letras");
     return true;
-  }else{
-    alert("La primera letra debe ser mayúscula");
+  }    
+  //primera mayúscula
+  else if(nombre.value.charAt(0).toUpperCase()!== nombre.value.charAt(0)){
+    alert ("La primera letra debe ser mayúscula");
     return false;
   }
-}
-
-
 //validar input apellido
- function validarApellido(){
-	if(apellido.length == 0){
+var apellido= document.getElementById("lastname");
+  if(apellido.value == null || apellido.value.length == 0 || /^\s+$/.test(apellido.value)){
     alert("Debe ingresar Apellido");
    return false;
 }
-   	return true;
-primeraMayuscula(apellido);
-soloLetras(apellido);
- }
- //validar correo
+else if(/^^[a-zA-Z]*$/.test(apellido.value) == false){
+    alert ("Debe ingresar solo letras");
+    return true;
+  }
+    else if(apellido.value.charAt(0).toUpperCase()!== apellido.value.charAt(0)){
+    alert ("Apellido no valido, la primera letra debe ser en mayúscula");
+    return false;
+  }
 
- function validarEmail(valor) {
-  if(correo.length == 0){
+ //validar correo
+var correo= document.getElementById("input-email").value;
+  if(email === null || correo.length == 0 || /^\s+$/.test(email)){
     alert("Debe ingresar su correo");
     return false;
   }
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(correo)){
-   return false;
-  } 
+var simb= /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+if(!simb.test(correo)){
+    alert ("Ingresar correo electrónico valido")
+   return false; 
+ }
 }
+  //contraseña 
+
+  function contrasenaValida(){
+    var password = document.getElementById("input-password");
+    var contrasena= document.getElementById("input-password").value;
+    if (contrasena.length < 6){
+      alert("Ingresar contraseña valida");
+      return false;
+    } else if (contrasena=="contraseña"){
+      alert("Ingresar contraseña valida");
+      return false; 
+    } else if (contrasena =="123456"){
+      alert("Ingresar contraseña valida");
+      return false;
+    } else if (contrasena =="098754"){
+      alert("Ingresar contraseña valida");
+      return false;
+    }else{
+      return true;
+    }
+  }
+  contrasenaValida();
+
 
 // validar lista
+function eleccion(){
 var form= document.getElementsByClassName("form-control").selectedIndex;
    if(form == null || form == 0){
     alert("Elija una bicicleta");
    }
+}
+eleccion();
+
