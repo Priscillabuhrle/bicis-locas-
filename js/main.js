@@ -29,37 +29,39 @@ else if(/^^[a-zA-Z]*$/.test(apellido.value) == false){
     return true;
   }
     else if(apellido.value.charAt(0).toUpperCase()!== apellido.value.charAt(0)){
-    alert ("Apellido no valido, la primera letra debe ser en mayúscula");
+    alert ("La primera letra debe ser en mayúscula");
     return false;
   }
 
  //validar correo
-var correo= document.getElementById("input-email").value;
-  if(email === null || correo.length == 0 || /^\s+$/.test(email)){
+var correo= document.getElementById("input-email");
+  if(correo.value === null || correo.value.length == 0 || /^\s+$/.test(correo.value)){
     alert("Debe ingresar su correo");
     return false;
   }
 var simb= /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-if(!simb.test(correo)){
-    alert ("Ingresar correo electrónico valido")
+if(!simb.test(correo.value)){
+    alert ("Ingresar correo electrónico valido");
    return false; 
  }
-}
-  //contraseña 
 
+  //contraseña 
+   var contrasena = document.getElementById("input-password");
   function contrasenaValida(){
-    var password = document.getElementById("input-password");
-    var contrasena= document.getElementById("input-password").value;
-    if (contrasena.length < 6){
+    if(contrasena.value.length ==0){
+      alert("Tiene que ingresar contraseña");
+      return false;
+    }
+    if (contrasena.value.length < 6){
       alert("Ingresar contraseña valida");
       return false;
-    } else if (contrasena=="contraseña"){
+    } else if (contrasena.value=="contrasena"){
       alert("Ingresar contraseña valida");
       return false; 
-    } else if (contrasena =="123456"){
+    } else if (contrasena.value =="123456"){
       alert("Ingresar contraseña valida");
       return false;
-    } else if (contrasena =="098754"){
+    } else if (contrasena.value =="098754"){
       alert("Ingresar contraseña valida");
       return false;
     }else{
@@ -77,4 +79,4 @@ var form= document.getElementsByClassName("form-control").selectedIndex;
    }
 }
 eleccion();
-
+}
