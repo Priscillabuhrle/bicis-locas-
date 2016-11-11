@@ -70,9 +70,12 @@ function validateForm() {
   contrasenaValida();
   // validar lista
   function eleccion(){
-    var form= document.getElementsByClassName("form-control").selectedIndex;
+    var form= document.querySelector('select').value;
     if(form == null || form == 0){
       alert("Elija una bicicleta");
+      return false;
+    }else{
+      return true;
     }
   }
   eleccion();
